@@ -1,12 +1,21 @@
-const findMax = (numbers) => {
-  let max = numbers[0];
-  for (const number of numbers) {
-    if (number > max) {
-      max = number;
+const products = [
+  { name: "Радар", price: 1300, quantity: 4 },
+  { name: "Сканер", price: 2700, quantity: 3 },
+  { name: "Дроїд", price: 400, quantity: 7 },
+  { name: "Захоплення", price: 1200, quantity: 2 },
+];
+
+const calculateTotalPrice = (allProducts, productName) => {
+  let sum = 0;
+  for (let product of allProducts) {
+    let { name, price, quantity } = product;
+    if (name === productName) {
+      sum = price * quantity;
     }
   }
-  return max;
+
+  return sum;
 };
-const tenNumbers = [1, 22, 3, 44, 5, 66, 7, 88, 9, 100];
-const maxValue = findMax(tenNumbers);
-console.log(maxValue);
+console.log(calculateTotalPrice(products, "Радар")); // 5200
+
+console.log(calculateTotalPrice(products, "Дроїд")); // 2800
